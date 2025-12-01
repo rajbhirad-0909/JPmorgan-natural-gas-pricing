@@ -1,0 +1,70 @@
+📌 Task 4 – FICO Score Bucketing (Quantization)
+JPMorgan Chase & Co. – Quantitative Research Virtual Experience
+
+This task focuses on categorizing (quantizing) FICO scores into buckets so that a credit risk model (which accepts categorical inputs) can estimate the probability of default (PD) more efficiently.
+
+We evaluate four different bucketing techniques and compare their performance using probability of default separation and log-likelihood.📂 Dataset
+
+Each record contains:
+
+fico_score
+
+default (1 = default, 0 = non-default)
+
+Dataset path:
+
+Task 3 and 4_Loan_Data.csv🧠 Methods Implemented
+1️⃣ Equal-Width Buckets
+
+Splits FICO values into equal numeric ranges.
+
+2️⃣ Equal-Frequency Buckets
+
+Each bucket has (approximately) the same number of borrowers.
+
+3️⃣ K-Means Clustering Buckets
+
+Buckets are formed using unsupervised clustering.
+
+4️⃣ Dynamic Programming Optimal Buckets (Best method)
+
+Maximizes the log-likelihood, giving the most statistically sound bucketing.📊 Results Summary
+Method	Log-Likelihood	Notes
+DP Optimal	⭐ Highest	Best PD separation
+K-Means	Good	Better than simple methods
+Equal-Frequency	Medium	Balanced buckets
+Equal-Width	Lowest	Simplest but weakest
+✔DP Optimal Bucket Edges
+[520, 580, 640, 696]
+📈 Visualizations
+
+Four PNG charts are generated:
+
+figures/equal_width.png
+figures/equal_freq.png
+figures/kmeans.png
+figures/dp_optimal.png
+
+
+Each chart shows PD (%) trends across the buckets.
+🧩 Final Conclusion
+
+The Dynamic Programming (DP) bucketing method offers the best quantization of FICO scores, making it the preferred choice for credit risk modeling.
+🚀 How to Run
+python task4_fico_bucketing.py
+
+
+This script:
+
+Loads data
+
+Computes bucket boundaries
+
+Calculates PD per bucket
+
+Saves all charts automatically
+
+👨‍💻 Author
+
+Raj Bhirad
+Quantitative Research Virtual Experience – JPMorgan Chase & Co.
